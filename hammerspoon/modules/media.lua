@@ -1,17 +1,17 @@
 -- Next song
-f16key:bind({}, "right", function()
+customKey:bind({}, "right", function()
     hs.eventtap.event.newSystemKeyEvent('NEXT', true):post()
     hs.eventtap.event.newSystemKeyEvent('NEXT', false):post()
 end)
 
 -- Prev song
-f16key:bind({}, "left", function()
+customKey:bind({}, "left", function()
     hs.eventtap.event.newSystemKeyEvent('PREVIOUS', true):post()
     hs.eventtap.event.newSystemKeyEvent('PREVIOUS', false):post()
 end)
 
 -- Play / Pause
-f16key:bind({}, "/", function()
+customKey:bind({}, "/", function()
     hs.eventtap.event.newSystemKeyEvent('PLAY', true):post()
     hs.eventtap.event.newSystemKeyEvent('PLAY', false):post()
 end)
@@ -32,5 +32,12 @@ function changeVolume(diff)
     end
 end
 
-f16key:bind({}, 'Down', changeVolume(-1))
-f16key:bind({}, 'Up', changeVolume(1))
+customKey:bind({}, 'Down', changeVolume(-1))
+customKey:bind({}, 'Up', changeVolume(1))
+customKey:bind({}, 'm', function()
+    local current = hs.audiodevice.defaultOutputDevice():volume()
+    if not current then
+        return
+    end
+    hs.audiodevice.defaultOutputDevice():setMuted(true)
+end)

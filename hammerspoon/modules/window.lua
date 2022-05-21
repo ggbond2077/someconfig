@@ -1,10 +1,10 @@
 -- Hints, list all apps
-f16key:bind({}, 'h', nil, function()
+customKey:bind({}, 'h', nil, function()
     hs.hints.windowHints(getAllValidWindows())
 end)
 
 -- Move Screen
-f16key:bind({ 'shift' }, 'left', nil, function()
+customKey:bind({"shift"}, 'left', nil, function()
     local w = hs.window.focusedWindow()
     if not w then
         return
@@ -18,7 +18,7 @@ f16key:bind({ 'shift' }, 'left', nil, function()
     end
 end)
 
-f16key:bind({ 'shift' }, 'right', nil, function()
+customKey:bind({"shift"}, 'right', nil, function()
     local w = hs.window.focusedWindow()
     if not w then
         return
